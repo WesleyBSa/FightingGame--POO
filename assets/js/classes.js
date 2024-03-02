@@ -68,11 +68,12 @@ class BigMonster extends Character {
 
 //Classe cenário
 class Stage {
-    constructor(fighter1, fighter2, fighter1El, fighter2El) { //Nesse constructor precisamos passar os 4 valores: Os 2 lutadores e os seus respectivos elementos.
+    constructor(fighter1, fighter2, fighter1El, fighter2El, logObject) { //Nesse constructor precisamos passar os 4 valores: Os 2 lutadores e os seus respectivos elementos.
         this.fighter1 = fighter1;
         this.fighter2 = fighter2;
         this.fighter1El = fighter1El;
         this.fighter2El = fighter2El;
+        this.log = logObject;
     }
 
     start() {
@@ -98,7 +99,7 @@ class Stage {
 
     doAttack(attacking, attacked) {
         if(attacking.life <= 0 || attacked.life <= 0){ //Condicional para identificar se um dos atacados chegou a 0 de hp, chegando no indice 0 o personagem está morto.
-            console.log(`Está morto`);
+            this.log.addMessage(`Está morto`);
             return;
         }
 
@@ -110,9 +111,9 @@ class Stage {
 
         if(actualAttack > actualDefense) { //Condicional para caso o  índice de ataque atual seja maior que o índice de defesa o atacado receba dano.
             attacked.life -= actualAttack; //Reduz a vida do atacado.
-            console.log(`${attacking.name} causou ${actualAttack.toFixed(2)} de dano em ${attacked.name}`);
+            this.log.addMessage(`${attacking.name} causou ${actualAttack.toFixed(2)} de dano em ${attacked.name}`);
         } else {
-            console.log(`${attacked.name} conseguiu defender.`);
+            this.log.addMessage(`${attacked.name} conseguiu defender.`);
         }
 
         this.update(); //Atualiza o placar.
@@ -122,12 +123,20 @@ class Stage {
 class Log {
     list = [];
 
-    constructor() {
-        
+    constructor(listEl) {
+        this.listEl = listEl;
     }
 
     addMessage(msg) {
-        this.list.push(msg);
+        this.list.push(msg); //Adiciona na lista.
+        this.render(); //Renderiza na lista.
+    }
 
+    render() { //Função para renderizar, transformar a lista em elementos visuais.
+        this.listEl.innerHTML = ''; //Tudo que estiver na lista será limpo.
+
+        for(let i in this.list) {
+            this.listEl.innerHTML += `<li>${this.list[i]}</li>`
+        }
     }
 }

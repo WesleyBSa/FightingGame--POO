@@ -1,3 +1,33 @@
+body {
+    background-color: #ffffff;
+}
+
+.container-game {
+    padding: 15px;
+    background-color: #fdfdfd;
+    margin: auto;
+}
+
+.container-person {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 500px;
+}
+
+.personGood,
+.personEvil {
+    height: 300px;
+}
+
+.personGood img,
+.personEvil img {
+    height: 290px;
+    width: 290px;
+}
+
+
+
 .fightarea {
     display: flex;
     gap: 20px;

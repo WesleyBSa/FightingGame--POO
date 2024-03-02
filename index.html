@@ -1,41 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Projeto Luta</title>
 </head>
+
 <body>
-    <div class="fightarea">
+    <div class="container-game">
 
-        <div id="char">
-            <div class="lifebar">
-                <div class="bar" style="width: 10%"></div>
+        <div class="fightarea">
+
+            <div id="char">
+                <div class="lifebar">
+                    <div class="bar" style="width: 10%"></div>
+                </div>
+                <strong class="name">--</strong>
+                <div>
+                    <button class="attackbutton">Atacar</button>
+                </div>
             </div>
-            <strong class="name">--</strong>
-            <div>
-                <button class="attackbutton">Atacar</button>
+
+            <div id="monster">
+                <div class="lifebar">
+                    <div class="bar" style="width: 10%"></div>
+                </div>
+                <strong class="name">--</strong>
+                <div>
+                    <button class="attackbutton">Atacar</button>
+                </div>
             </div>
+
         </div>
 
-        <div id="monster">
-            <div class="lifebar">
-                <div class="bar" style="width: 10%"></div>
-            </div>
-            <strong class="name">--</strong>
-            <div>
-                <button class="attackbutton">Atacar</button>
-            </div>
-        </div>
+        <ul class="log">
 
+        </ul>
     </div>
 
-    <ul class="log">
+    <div class="container-person">
+        <div class="personGood">
+            <img src="./assets/img/guerreiroAttack.gif" alt="">
+        </div>
 
-    </ul>
+        <div class="personEvil">
+            <img src="assets/img/monsterAttack.gif" alt="">
 
+        </div>
+    </div>
     <script src="assets/js/classes.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
+
 </html>
